@@ -4,6 +4,21 @@ import json
 from flask import Flask, request, Response
 import os
 
+# # Info about the bot
+# https://api.telegram.org/bot7424903285:AAFb3kx87w9zPxW5z8hcLPf8RZoIYS-QI74/getMe
+
+# # Get Updates
+# https://api.telegram.org/bot7424903285:AAFb3kx87w9zPxW5z8hcLPf8RZoIYS-QI74/getUpdates
+
+# #WebHook Render
+# https://api.telegram.org/bot7424903285:AAFb3kx87w9zPxW5z8hcLPf8RZoIYS-QI74/setWebhook?url=https://telegram-rossmann-3nap.onrender.com
+
+# # Webhook
+# https://api.telegram.org/bot7424903285:AAFb3kx87w9zPxW5z8hcLPf8RZoIYS-QI74/setWebhook?url=https://983aca7044941a.lhr.life
+
+# # Send message
+# https://api.telegram.org/bot7424903285:AAFb3kx87w9zPxW5z8hcLPf8RZoIYS-QI74/sendMessage?chat_id=7271684129&text=Hello
+
 
 # constants
 TOKEN = '7424903285:AAFb3kx87w9zPxW5z8hcLPf8RZoIYS-QI74'
@@ -17,23 +32,12 @@ def send_message(chat_id, text):
 
         return None
 
-# # Info about the bot
-# https://api.telegram.org/bot7424903285:AAFb3kx87w9zPxW5z8hcLPf8RZoIYS-QI74/getMe
-
-# # Get Updates
-# https://api.telegram.org/bot7424903285:AAFb3kx87w9zPxW5z8hcLPf8RZoIYS-QI74/getUpdates
-
-# # Webhook
-# https://api.telegram.org/bot7424903285:AAFb3kx87w9zPxW5z8hcLPf8RZoIYS-QI74/setWebhook?url=https://983aca7044941a.lhr.life
-
-# # Send message
-# https://api.telegram.org/bot7424903285:AAFb3kx87w9zPxW5z8hcLPf8RZoIYS-QI74/sendMessage?chat_id=7271684129&text=Hello
 
 
 def load_dataset(store_id):
 # loading test dataset
-        df10 = pd.read_csv( '/test.csv' )
-        df_store_raw = pd.read_csv( '/store.csv' )
+        df10 = pd.read_csv( 'test.csv' )
+        df_store_raw = pd.read_csv( 'store.csv' )
 
         # merge test dataset + store
         df_test = pd.merge( df10, df_store_raw, how='left', on='Store' )
@@ -119,7 +123,6 @@ def index():
         else: 
                 return '<h1>Rossmann Telegram BOT </h1>'
         
-
 if __name__ == '__main__':
         port = os.environ.get('PORT', 5000)
-        app.run(host='0.0.0.0', port=5000)
+        app.run(host='0.0.0.0', port=port)
